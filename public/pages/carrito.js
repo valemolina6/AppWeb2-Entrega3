@@ -23,10 +23,10 @@ window.borrar = (i) => {
 };
 
 btn.addEventListener('click', async () => {
-    // 1. Validamos si el carrito tiene productos
+    
     if (cart.length === 0) {
         alert("El carrito está vacío. ¡Añade algunos productos antes de comprar!");
-        return; // Cortamos la ejecución aquí para que no haga el fetch
+        return; 
     }
 
     const user = JSON.parse(sessionStorage.getItem('user'));
