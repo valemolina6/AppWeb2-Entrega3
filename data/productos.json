@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "nombre": "Remera",
+    "desc": "Remera de algodón estampada",
+    "precio": 9999,
+    "imagen": "/img/remera.jpeg",
+    "categoria": "Indumentaria top"
+  },
+  {
+    "id": 2,
+    "nombre": "Jean",
+    "desc": "Jean clásico azul",
+    "precio": 27800,
+    "imagen": "/img/jean.jpeg",
+    "categoria": "Indumentaria bottom"
+  },
+  {
+    "id": 3,
+    "nombre": "Campera",
+    "desc": "Campera abrigada",
+    "precio": 32000,
+    "imagen": "/img/campera.jpeg",
+    "categoria": "Indumentaria top"
+  },
+  {
+    "id": 4,
+    "nombre": "Top",
+    "desc": "Top deportivo",
+    "precio": 12000,
+    "imagen": "/img/top.jpeg",
+    "categoria": "Indumentaria top"
+  },
+  {
+    "id": 5,
+    "nombre": "Collar",
+    "desc": "Collar de acero dorado",
+    "precio": 16400,
+    "imagen": "/img/collar.jpeg",
+    "categoria": "Accesorios"
+  }
+]

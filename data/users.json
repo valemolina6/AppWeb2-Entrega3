@@ -1,0 +1,43 @@
+[
+  {
+    "id": 1,
+    "name": "Valentina",
+    "lastname": "Molina",
+    "username": "valemoli",
+    "email": "valem1@gmail.com",
+    "pass": "1234"
+  },
+  {
+    "id": 2,
+    "name": "Lázaro",
+    "lastname": "Cugat",
+    "username": "lazacu",
+    "email": "lazaroc2@gmail.com",
+    "pass": "abcd"
+  },
+  {
+    "id": 3,
+    "name": "María",
+    "lastname": "Gomez",
+    "username": "marigo",
+    "email": "mariag3@gmail.com",
+    "pass": "1234"
+  },
+  {
+    "id": 4,
+    "name": "Agustin",
+    "lastname": "Negro",
+    "username": "agune",
+    "email": "agusn4@gmail.com",
+    "pass": "abcd"
+  },
+  {
+    "id": 5,
+    "name": "Norma",
+    "lastname": "Carranza",
+    "username": "norca",
+    "email": "normac5@gmail.com",
+    "pass": "1234"
+  }
+ 
+]

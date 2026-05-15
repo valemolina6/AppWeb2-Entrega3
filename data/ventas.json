@@ -1,0 +1,70 @@
+[
+  {
+    "id": 1,
+    "fecha": "2026-05-15T03:56:29.532Z",
+    "productos": [
+      {
+        "id": 3,
+        "nombre": "Campera",
+        "desc": "Campera abrigada",
+        "precio": 32000,
+        "imagen": "/img/campera.jpeg",
+        "categoria": "Indumentaria top"
+      },
+      {
+        "id": 2,
+        "nombre": "Jean",
+        "desc": "Jean clásico azul",
+        "precio": 27800,
+        "imagen": "/img/jean.jpeg",
+        "categoria": "Indumentaria bottom"
+      }
+    ],
+    "usuario": "lazacu"
+  },
+  {
+    "id": 2,
+    "fecha": "2026-05-15T03:59:48.627Z",
+    "productos": [],
+    "usuario": "lazacu"
+  },
+  {
+    "id": 3,
+    "fecha": "2026-05-15T04:00:58.954Z",
+    "productos": [],
+    "usuario": "lazacu"
+  },
+  {
+    "id": 4,
+    "fecha": "2026-05-15T04:01:45.789Z",
+    "productos": [],
+    "usuario": "lazacu"
+  },
+  {
+    "id": 5,
+    "fecha": "2026-05-15T04:02:09.779Z",
+    "productos": [],
+    "usuario": "lazacu"
+  },
+  {
+    "id": 6,
+    "fecha": "2026-05-15T04:02:27.130Z",
+    "productos": [],
+    "usuario": "lazacu"
+  },
+  {
+    "id": 7,
+    "fecha": "2026-05-15T04:05:09.562Z",
+    "productos": [
+      {
+        "id": 2,
+        "nombre": "Jean",
+        "desc": "Jean clásico azul",
+        "precio": 27800,
+        "imagen": "/img/jean.jpeg",
+        "categoria": "Indumentaria bottom"
+      }
+    ],
+    "usuario": "lazacu"
+  }
+]
