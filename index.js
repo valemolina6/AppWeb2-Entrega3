@@ -1,22 +1,23 @@
-import express from 'express'
-import userRouter from './routes/user.routes.js'
-import productRouter from './routes/product.routes.js'; 
+import express from 'express';
+import 'dotenv/config';
+import { connectToDatabase } from './db/connection.js';
+
+import productRouter from './routes/product.routes.js';
 import saleRouter from './routes/sale.routes.js';
+import userRouter from './routes/user.routes.js'; 
 
-const app = express()
-const port = 3000
+const app = express();
+const port = process.env.PORT || 3003;
 
-app.use(express.json())
-app.use('/user', userRouter)
+app.use(express.json());
+app.use(express.static('./public'));
+
 app.use('/productos', productRouter);
 app.use('/ventas', saleRouter);
+app.use('/user', userRouter);
 
-app.listen(port,()=>{
-    console.log(`Servidor levantado en puerto ${port}`)
-})
+await connectToDatabase();
 
-/*Levanta front*/
-app.use(express.static('./public'))
-
-/*Rutas end point*/
-app.unsubscribe('/user', userRouter)
+app.listen(port, () => {
+    console.log(`Servidor levantado en http://localhost:${port}`);
+});

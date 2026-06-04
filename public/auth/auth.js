@@ -9,7 +9,7 @@ alertContainer.innerHTML = alert()
 const btnCloseAlert = document.getElementById('btnCloseAlert')
 
 const auth = async({name, pass})=>{
-    const user = await fetch('http://localhost:3000/user/login',{
+    const user = await fetch('http://localhost:3001/user/login',{
         method: "POST",
         headers:{
             "Content-Type": "application/json"
@@ -31,19 +31,25 @@ const auth = async({name, pass})=>{
 btnCloseAlert.addEventListener('click', ()=>{
     handleCloseAlert()
 })
-btnlogin.addEventListener('click', async()=>{
+
+btnlogin.addEventListener('click', async () => {
     const name = document.getElementById('txtname').value
     const pass = document.getElementById('txtpass').value
 
-    if(name != '' && pass != ''){
-        try{
-            const user = await auth({name,pass})
-            addSession(user)
-            window.location.href="../pages/tienda.html"
-        }catch(error){
+    if (name != '' && pass != '') {
+        try {
+            const data = await auth({ name, pass }) 
+            addSession(data)
+            if (data && data.token) {
+                sessionStorage.setItem('token', data.token)
+            } else if (data && data.user && data.user.token) {
+                sessionStorage.setItem('token', data.user.token)
+            }
+            window.location.href = "./pages/tienda.html"
+        } catch (error) {
             handlealert('Hubo un problema para iniciar sesion')
         }
-    }else{
-        handlealert('Hay campos imcompletos')
+    } else {
+        handlealert('Hay campos incompletos')
     }
 })

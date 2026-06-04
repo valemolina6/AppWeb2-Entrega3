@@ -1,3 +1,5 @@
+import { getToken } from '../utils/sessionStorage.controller.js';
+
 const lista = document.getElementById('lista-carrito');
 const totalLabel = document.getElementById('total');
 const btn = document.getElementById('btnComprar');
@@ -52,3 +54,47 @@ btn.addEventListener('click', async () => {
 });
 
 pintar();
+
+btn.addEventListener('click', async () => {
+    if (cart.length === 0) {
+        alert("El carrito está vacío. ¡Añade algunos productos antes de comprar!");
+        return; 
+    }
+
+    const user = JSON.parse(sessionStorage.getItem('user'));
+    const token = getToken(); 
+
+    if(!token) {
+        alert("Sesión expirada. Por favor, inicia sesión nuevamente.");
+        window.location.href = '../index.html';
+        return;
+    }
+    
+    try {
+       
+        const res = await fetch('/ventas/create', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}` 
+            },
+            body: JSON.stringify({ 
+                productos: cart, 
+                total: totalLabel.innerText,
+                user: user?.username || "anonimo" 
+            })
+        });
+
+        if (res.ok) {
+            alert("¡Gracias por tu compra!");
+            localStorage.removeItem('cart');
+            window.location.href = 'tienda.html';
+        } else {
+            const errorData = await res.json();
+            alert("Hubo un error: " + errorData.message);
+        }
+    } catch (error) {
+        console.error("Error en la compra:", error);
+        alert("No se pudo conectar con el servidor.");
+    }
+});

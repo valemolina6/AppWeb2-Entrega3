@@ -1,15 +1,22 @@
 import { Router } from 'express';
-import { readFile } from 'node:fs/promises';
+import { loginUser, registerUser } from '../db/actions/user.actions.js';
 const router = Router();
 
 router.post('/login', async (req, res) => {
-    const { username, pass } = req.body;
     try {
-        const file = await readFile('./data/users.json', 'utf-8');
-        const users = JSON.parse(file);
-        const user = users.find(u => u.username === username && u.pass === pass);
-        if (user) res.json({ status: true, username: user.username });
-        else res.status(400).json({ status: false });
-    } catch (e) { res.status(500).send("Error"); }
+        const result = await loginUser(req.body);
+        res.status(200).json(result); 
+    } catch (e) { 
+        res.status(400).json({ message: e.message }); 
+    }
 });
+
+
+router.post('/register', async (req, res) => {
+    try {
+        const result = await registerUser(req.body);
+        res.status(201).json(result);
+    } catch (e) { res.status(400).json({ error: "Error al crear" }); }
+});
+
 export default router;

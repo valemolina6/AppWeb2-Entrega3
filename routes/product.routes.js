@@ -1,11 +1,12 @@
 import { Router } from 'express';
-import { readFile } from 'node:fs/promises';
+import { findAll } from '../db/actions/product.actions.js';
 const router = Router();
 
 router.get('/todos', async (req, res) => {
     try {
-        const data = await readFile('./data/productos.json', 'utf-8');
-        res.json(JSON.parse(data));
-    } catch (e) { res.status(500).send("Error"); }
+        const result = await findAll();
+        res.status(200).json(result);
+    } catch (e) { res.status(400).json(); }
 });
+
 export default router;

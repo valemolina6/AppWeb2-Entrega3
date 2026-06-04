@@ -1,15 +1,16 @@
 import { Router } from 'express';
-import { readFile, writeFile } from 'node:fs/promises';
+import { createSale } from '../db/actions/sales.actions.js';
+import { verifyToken } from '../middlewares/auth.middleware.js'; 
 const router = Router();
 
-router.post('/checkout', async (req, res) => {
+router.post('/create', verifyToken, async (req, res) => {
+    const { productos, total, user } = req.body;
     try {
-        const data = await readFile('./data/ventas.json', 'utf-8');
-        const ventas = JSON.parse(data);
-        const nuevaVenta = { id: ventas.length + 1, fecha: new Date(), ...req.body };
-        ventas.push(nuevaVenta);
-        await writeFile('./data/ventas.json', JSON.stringify(ventas, null, 2));
-        res.status(201).json({ message: "OK" });
-    } catch (e) { res.status(500).json({ message: "Error" }); }
+        const result = await createSale({ productos, total, user });
+        res.status(200).json(result);
+    } catch (e) { 
+        res.status(400).json({ error: "Error al procesar venta", detalles: e.message }); 
+    }
 });
+
 export default router;
