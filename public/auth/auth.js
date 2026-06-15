@@ -24,7 +24,6 @@ const auth = async({name, pass})=>{
         console.log('Error:',error)
         throw new Error('Error en la peticion')
     })
-
     return user
 }
 
@@ -35,7 +34,6 @@ btnCloseAlert.addEventListener('click', ()=>{
 btnlogin.addEventListener('click', async () => {
     const name = document.getElementById('txtname').value
     const pass = document.getElementById('txtpass').value
-
     if (name != '' && pass != '') {
         try {
             const data = await auth({ name, pass }) 

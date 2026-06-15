@@ -5,19 +5,15 @@ import jwt from 'jsonwebtoken';
 
 export const loginUser = async ({ username, pass }) => {
     await connectToDatabase();
-    
     const user = await User.findOne({ username });
     if (!user) throw new Error("Usuario no encontrado");
-
     const isMatch = await bcrypt.compare(pass, user.pass);
     if (!isMatch) throw new Error("Contraseña incorrecta");
-
     const token = jwt.sign(
         { id: user._id, username: user.username }, 
         process.env.JWT_SECRET, 
         { expiresIn: '1h' }
     );
-
     return { 
         user: { username: user.username, name: user.name, lastname: user.lastname }, 
         token 
